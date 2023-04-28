@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            color:rgb(0, 0, 0);
+            background-image:linear-gradient(90deg,white 10%,lightblue 100%);
+            display:flex;
+            flex-direction :column;
+            align-items:center;
+            line-height:2;
+        }
+        form{
+            background-color:white;
+            
+            max-width:400px;
+            max-height:800px;
+            width:50%;
+            padding: 60px 63px;
+            border-radius:3px;
+            box-shadow:0 0 50px rgba(0, 0, 0, 60);
+        }
+        .row{
+            display:flex;
+            flex-direction:column;
+            margin-bottom:20px;
+        }
+        .row label{
+            font-size:20px;
+        }
+        .row input{
+            flex:1;
+            padding:13px;
+            border:2px solid blue;
+            border-radius:5px;
+
+        }
+        .btn{
+            width:100%;
+            padding:9px;
+            font-size:20px;
+            border:none;
+            border-radius:25px;
+            background-color:rgb(125, 55, 114);
+            cursor:pointer;
+        }
+        @media(max-width:458px)
+        {
+            body{
+                margin:0 50px
+            }
+            form{
+                background-color: white;
+                border:none;
+                padding:50px 50px;
+                box-shadow:none
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Login</h1>
+        <form onsubmit="return validate()">
+            
+            
+            <div class="row">
+                <label>Username</label>
+                <input id="username" placeholder="Enter your name"/>
+            </div>
+            <div class="row">
+                <label>Password</label>
+                <input id ="password" type="password" placeholder="Enter password "/>
+            </div>
+            <button class ="btn">Login</button>
+
+
+        </form> 
+        <script>
+            function validate(){
+                var username=document.getElementById("username").value
+                var password=document.getElementById("password").value
+                var usernameCheck=/^[a-z]+@[a-z]+\.[a-z]{2,3}$/
+                var passwordCheck=/^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{6,10}$/
+                console.log(username,password)
+                if(username=="")
+                {
+                    alert("Please enter username")
+                    return false
+                }
+                if(!username.match(usernameCheck)){
+                   alert("Check your username")
+                   return false
+                }
+                if(!password.match(passwordCheck)){
+                    alert("check your password ")
+                    return false
+                }
+                return true
+            }
+        </script>
+</body>
+</html>
